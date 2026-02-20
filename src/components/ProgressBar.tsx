@@ -6,7 +6,7 @@ interface ProgressBarProps {
   completedSteps: Set<number>;
 }
 
-const MINUTES_PER_STEP = [2, 2, 1.5, 1.5, 1, 2, 1, 1.5];
+const MINUTES_PER_STEP = [1.5, 1, 0.5, 1.5];
 
 export default function ProgressBar({
   currentStep,

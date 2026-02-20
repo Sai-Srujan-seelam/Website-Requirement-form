@@ -39,20 +39,7 @@ function Section({ title, defaultOpen = false, children }: { title: string; defa
   );
 }
 
-function Row({ label, value }: { label: string; value: string | string[] }) {
-  if (Array.isArray(value)) {
-    if (value.length === 0) return null;
-    return (
-      <div className="flex flex-col sm:flex-row sm:gap-4 py-1.5">
-        <span className="text-xs text-gray-400 sm:w-44 shrink-0">{label}</span>
-        <div className="flex flex-wrap gap-1 mt-0.5 sm:mt-0">
-          {value.map((v) => (
-            <span key={v} className="inline-block px-2 py-0.5 bg-gray-100 text-gray-700 text-xs rounded-full">{v}</span>
-          ))}
-        </div>
-      </div>
-    );
-  }
+function Row({ label, value }: { label: string; value: string }) {
   if (!value) return null;
   return (
     <div className="flex flex-col sm:flex-row sm:gap-4 py-1.5">
@@ -73,8 +60,7 @@ export default function ReviewScreen({ data, onDownload, onStartOver }: ReviewSc
         </div>
         <h2 className="text-2xl font-semibold text-gray-900 mb-1">You're all set!</h2>
         <p className="text-sm text-gray-500 max-w-md mx-auto">
-          Your project details have been saved. Here's a summary of everything you shared.
-          Click any section to expand it.
+          We've received your responses. Here's a summary of everything you shared.
         </p>
       </div>
 
@@ -84,61 +70,27 @@ export default function ReviewScreen({ data, onDownload, onStartOver }: ReviewSc
           <Row label="Company" value={data.companyName} />
           <Row label="Email" value={data.email} />
           <Row label="Phone" value={data.phone} />
-          <Row label="Website status" value={data.websiteStatus} />
-          <Row label="Business" value={data.businessDescription} />
-          <Row label="Project goal" value={data.projectGoal} />
+          <Row label="Previous site cost" value={data.prevWebsiteCost} />
+          <Row label="People joined via site" value={data.peopleJoined} />
         </Section>
 
         <Section title={STEP_TITLES[1]}>
-          <Row label="Website type" value={data.websiteType} />
-          <Row label="Core features" value={data.coreFeatures} />
-          {data.coreFeaturesOther && <Row label="Other (core)" value={data.coreFeaturesOther} />}
-          <Row label="Advanced features" value={data.advancedFeatures} />
-          {data.advancedFeaturesOther && <Row label="Other (advanced)" value={data.advancedFeaturesOther} />}
+          <Row label="Demo link" value={data.demoLink} />
+          <Row label="Demo approval" value={data.demoConfirmed} />
+          <Row label="Feedback" value={data.demoFeedback} />
         </Section>
 
         <Section title={STEP_TITLES[2]}>
-          <Row label="Brand identity" value={data.brandIdentity} />
-          <Row label="Copy readiness" value={data.copyStatus} />
-          <Row label="Visual styles" value={data.visualStyles} />
-          <Row label="Example websites" value={data.exampleWebsites} />
+          <Row label="Revision rounds" value={data.revisionRounds} />
+          <Row label="Timeline" value={data.timeline} />
         </Section>
 
         <Section title={STEP_TITLES[3]}>
-          <Row label="Start date" value={data.startDate} />
-          <Row label="Launch timeframe" value={data.launchTimeframe} />
-          <Row label="Project phases" value={data.projectPhases} />
-          <Row label="Revision rounds" value={data.revisionRounds} />
-          <Row label="Involvement" value={data.involvement} />
-        </Section>
-
-        <Section title={STEP_TITLES[4]}>
-          <Row label="Budget range" value={data.budgetRange} />
-          <Row label="Flexibility" value={data.budgetFlexibility} />
-          <Row label="Payment plan" value={data.paymentPlan} />
+          <Row label="Phase 1 budget" value={data.phase1Budget} />
+          <Row label="Phase 2 budget" value={data.phase2Budget} />
+          <Row label="Phase 3 budget" value={data.phase3Budget} />
+          <Row label="Payment preference" value={data.paymentPreference} />
           <Row label="Budget notes" value={data.budgetNotes} />
-        </Section>
-
-        <Section title={STEP_TITLES[5]}>
-          <Row label="SEO importance" value={data.seoImportance} />
-          <Row label="SEO services" value={data.seoServices} />
-          <Row label="Marketing" value={data.marketingServices} />
-          <Row label="Channels" value={data.existingChannels} />
-          {data.existingChannelsOther && <Row label="Other channels" value={data.existingChannelsOther} />}
-        </Section>
-
-        <Section title={STEP_TITLES[6]}>
-          <Row label="Domain" value={data.hasDomain} />
-          <Row label="Hosting" value={data.hasHosting} />
-          <Row label="Tech preferences" value={data.technicalPrefs} />
-          <Row label="Post-launch" value={data.postLaunchSupport} />
-        </Section>
-
-        <Section title={STEP_TITLES[7]}>
-          <Row label="Brand personality" value={data.brandPersonality} />
-          <Row label="Website persona" value={data.websitePersona} />
-          <Row label="Success vision" value={data.successVision} />
-          <Row label="Concerns" value={data.concerns} />
         </Section>
       </div>
 

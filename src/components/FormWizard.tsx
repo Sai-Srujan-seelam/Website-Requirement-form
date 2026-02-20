@@ -7,13 +7,9 @@ import ReviewScreen from './ReviewScreen';
 import Confetti from './Confetti';
 
 import StepAboutYou from './steps/StepAboutYou';
-import StepScope from './steps/StepScope';
-import StepContentBrand from './steps/StepContentBrand';
-import StepTimeline from './steps/StepTimeline';
-import StepBudget from './steps/StepBudget';
-import StepSeoMarketing from './steps/StepSeoMarketing';
-import StepTechnical from './steps/StepTechnical';
-import StepPersonalization from './steps/StepPersonalization';
+import StepDemoReview from './steps/StepDemoReview';
+import StepRevisions from './steps/StepRevisions';
+import StepBudgetPhases from './steps/StepBudgetPhases';
 
 const TOTAL_STEPS = STEP_TITLES.length;
 
@@ -28,7 +24,6 @@ export default function FormWizard() {
   const [completedSteps, setCompletedSteps] = useState<Set<number>>(new Set());
   const [showConfetti, setShowConfetti] = useState(false);
 
-  // Refs to avoid stale closures in auto-advance timers
   const dataRef = useRef(data);
   const stepRef = useRef(currentStep);
   const autoAdvanceTimer = useRef<ReturnType<typeof setTimeout>>(null);
@@ -84,7 +79,6 @@ export default function FormWizard() {
     }
   }, []);
 
-  // Auto-advance after radio selection when step becomes fully valid
   const tryAutoAdvance = useCallback(() => {
     if (autoAdvanceTimer.current) clearTimeout(autoAdvanceTimer.current);
     autoAdvanceTimer.current = setTimeout(() => {
@@ -106,7 +100,6 @@ export default function FormWizard() {
     };
   }, []);
 
-  // Keyboard navigation
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (wizardState !== 'form') return;
@@ -167,13 +160,9 @@ export default function FormWizard() {
 
   const steps = [
     <StepAboutYou key="s0" {...stepProps} />,
-    <StepScope key="s1" {...stepProps} />,
-    <StepContentBrand key="s2" {...stepProps} />,
-    <StepTimeline key="s3" {...stepProps} />,
-    <StepBudget key="s4" {...stepProps} />,
-    <StepSeoMarketing key="s5" {...stepProps} />,
-    <StepTechnical key="s6" {...stepProps} />,
-    <StepPersonalization key="s7" {...stepProps} />,
+    <StepDemoReview key="s1" {...stepProps} />,
+    <StepRevisions key="s2" {...stepProps} />,
+    <StepBudgetPhases key="s3" {...stepProps} />,
   ];
 
   if (wizardState === 'submitting') {
@@ -215,7 +204,7 @@ export default function FormWizard() {
 
       <div
         key={currentStep}
-        className={`min-h-[380px] ${direction === 'forward' ? 'animate-slide-right' : 'animate-slide-left'}`}
+        className={`min-h-[300px] ${direction === 'forward' ? 'animate-slide-right' : 'animate-slide-left'}`}
       >
         {steps[currentStep]}
       </div>
@@ -237,7 +226,7 @@ export default function FormWizard() {
 
         <div className="flex items-center gap-3">
           <span className="text-xs text-gray-400 hidden sm:block">
-            Press <kbd className="px-1.5 py-0.5 bg-gray-100 rounded text-[10px] font-mono">Enter</kbd> to continue
+            Press <kbd className="px-1.5 py-0.5 bg-gray-100 rounded text-[10px] font-mono">Enter</kbd>
           </span>
           <button
             type="button"

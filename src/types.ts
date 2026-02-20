@@ -1,57 +1,27 @@
 export interface FormData {
-  // Step 1 – About You
+  // Step 1 – About You & Current Site
   fullName: string;
   companyName: string;
   email: string;
   phone: string;
-  websiteStatus: string;
-  businessDescription: string;
-  projectGoal: string;
+  prevWebsiteCost: string;
+  peopleJoined: string;
 
-  // Step 2 – Project Scope
-  websiteType: string;
-  coreFeatures: string[];
-  coreFeaturesOther: string;
-  advancedFeatures: string[];
-  advancedFeaturesOther: string;
+  // Step 2 – Phase 1 Demo Review
+  demoLink: string;
+  demoConfirmed: string;
+  demoFeedback: string;
 
-  // Step 3 – Content & Brand
-  brandIdentity: string;
-  copyStatus: string;
-  visualStyles: string[];
-  exampleWebsites: string;
-
-  // Step 4 – Timeline
-  startDate: string;
-  launchTimeframe: string;
-  projectPhases: string;
+  // Step 3 – Revisions & Timeline
   revisionRounds: string;
-  involvement: string;
+  timeline: string;
 
-  // Step 5 – Budget
-  budgetRange: string;
-  budgetFlexibility: string;
-  paymentPlan: string;
+  // Step 4 – Budget & Phases
+  phase1Budget: string;
+  phase2Budget: string;
+  phase3Budget: string;
+  paymentPreference: string;
   budgetNotes: string;
-
-  // Step 6 – SEO & Marketing
-  seoImportance: string;
-  seoServices: string[];
-  marketingServices: string[];
-  existingChannels: string[];
-  existingChannelsOther: string;
-
-  // Step 7 – Technical
-  hasDomain: string;
-  hasHosting: string;
-  technicalPrefs: string[];
-  postLaunchSupport: string[];
-
-  // Step 8 – Personalization
-  brandPersonality: string[];
-  websitePersona: string;
-  successVision: string;
-  concerns: string;
 }
 
 export const initialFormData: FormData = {
@@ -59,47 +29,21 @@ export const initialFormData: FormData = {
   companyName: '',
   email: '',
   phone: '',
-  websiteStatus: '',
-  businessDescription: '',
-  projectGoal: '',
+  prevWebsiteCost: '',
+  peopleJoined: '',
 
-  websiteType: '',
-  coreFeatures: [],
-  coreFeaturesOther: '',
-  advancedFeatures: [],
-  advancedFeaturesOther: '',
+  demoLink: '',
+  demoConfirmed: '',
+  demoFeedback: '',
 
-  brandIdentity: '',
-  copyStatus: '',
-  visualStyles: [],
-  exampleWebsites: '',
-
-  startDate: '',
-  launchTimeframe: '',
-  projectPhases: '',
   revisionRounds: '',
-  involvement: '',
+  timeline: '',
 
-  budgetRange: '',
-  budgetFlexibility: '',
-  paymentPlan: '',
+  phase1Budget: '',
+  phase2Budget: '',
+  phase3Budget: '',
+  paymentPreference: '',
   budgetNotes: '',
-
-  seoImportance: '',
-  seoServices: [],
-  marketingServices: [],
-  existingChannels: [],
-  existingChannelsOther: '',
-
-  hasDomain: '',
-  hasHosting: '',
-  technicalPrefs: [],
-  postLaunchSupport: [],
-
-  brandPersonality: [],
-  websitePersona: '',
-  successVision: '',
-  concerns: '',
 };
 
 export interface StepProps {
@@ -111,11 +55,7 @@ export interface StepProps {
 
 export const STEP_TITLES = [
   'About You',
-  'Project Scope',
-  'Content & Brand',
-  'Timeline',
-  'Budget',
-  'SEO & Marketing',
-  'Technical Details',
-  'Final Notes',
+  'Demo Review',
+  'Revisions',
+  'Budget & Phases',
 ];
