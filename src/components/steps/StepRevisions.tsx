@@ -27,7 +27,7 @@ export default function StepRevisions({ data, onChange, errors, onAutoAdvance }:
         <p className="text-sm text-gray-500 leading-relaxed">
           A revision round is each time you review the work and ask for changes. For example, if
           you see the design and request color and layout tweaks, that counts as one round. More
-          rounds means more flexibility to fine-tune, but also extends the project timeline.
+          rounds means more flexibility to fine-tune, but also extends the project timeline & the price
         </p>
       </div>
 
