@@ -6,7 +6,8 @@ const BUDGET_OPTIONS = [
   '$500 – $1,000',
   '$1,000 – $2,000',
   '$2,000 – $3,000',
-  '$3,000+',
+  '$3,000 – $5,000',
+  '$5,000+',
 ];
 
 const PAYMENT_OPTIONS = [
@@ -23,7 +24,6 @@ export default function StepBudgetPhases({ data, onChange, errors, onAutoAdvance
         Your project is broken into 3 phases. You can choose to do them all or stop after any phase.
       </p>
 
-      {/* Phase breakdown */}
       <div className="mb-6 space-y-3">
         <div className="p-4 bg-accent/5 border border-accent/15 rounded-xl">
           <div className="flex items-center gap-2 mb-1">

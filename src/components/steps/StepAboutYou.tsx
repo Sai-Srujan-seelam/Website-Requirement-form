@@ -5,7 +5,8 @@ const PREV_COST_OPTIONS = [
   'Never had a website',
   'Under $500',
   '$500 – $1,000',
-  '$1,000 – $3,000',
+  '$1,000 – $2,000',
+  '$2,000 – $3,000',
   '$3,000+',
   'Not sure / don\'t remember',
 ];

@@ -117,10 +117,13 @@ export default function FormWizard() {
   const handleSubmit = async () => {
     setWizardState('submitting');
     try {
+      const d = dataRef.current;
       const formData = new URLSearchParams();
       formData.append('form-name', 'project-intake');
       formData.append('bot-field', '');
-      formData.append('submission', JSON.stringify(dataRef.current));
+      for (const [key, value] of Object.entries(d)) {
+        formData.append(key, value);
+      }
 
       await fetch('/', {
         method: 'POST',
